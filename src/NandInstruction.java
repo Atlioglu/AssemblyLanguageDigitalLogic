@@ -8,9 +8,9 @@ public class NandInstruction extends Processor{
     private Operations operations;
  
     public NandInstruction(){
-       super.opcode.add('1');
+       super.opcode.add('0');
         super.opcode.add('0');
-        super.opcode.add('0');
+        super.opcode.add('1');
         super.opcode.add('0');
         operations = new Operations();
         //dest = new ArrayList<>(6);
@@ -24,7 +24,7 @@ public class NandInstruction extends Processor{
     public void setDest(ArrayList<Character> dest) {
         String binaryString = operations.concatenateArrayListToString(dest);
         int numbere = Integer.parseInt(binaryString);
-        binaryString = String.format("%03d", Integer.parseInt(Integer.toBinaryString(numbere)));
+        binaryString = String.format("%04d", Integer.parseInt(Integer.toBinaryString(numbere)));
         dest = operations.divideStringToArrayList(binaryString);
         this.dest = dest;
     }
@@ -37,7 +37,7 @@ public class NandInstruction extends Processor{
     public void setSrc1(ArrayList<Character> src1) {
         String binaryString = operations.concatenateArrayListToString(src1);
         int numbere = Integer.parseInt(binaryString);
-        binaryString = String.format("%03d", Integer.parseInt(Integer.toBinaryString(numbere)));
+        binaryString = String.format("%04d", Integer.parseInt(Integer.toBinaryString(numbere)));
         src1 = operations.divideStringToArrayList(binaryString);
         this.src1 = src1;
     }
@@ -49,7 +49,7 @@ public class NandInstruction extends Processor{
     public void setSrc2(ArrayList<Character> src2) {
         String binaryString = operations.concatenateArrayListToString(src2);
         int numbere = Integer.parseInt(binaryString);
-        binaryString = String.format("%03d", Integer.parseInt(Integer.toBinaryString(numbere)));
+        binaryString = String.format("%04d", Integer.parseInt(Integer.toBinaryString(numbere)));
         src2 = operations.divideStringToArrayList(binaryString);
         this.src2 = src2;
     }
@@ -60,7 +60,7 @@ public class NandInstruction extends Processor{
     }
 
     public void setGap(ArrayList<Character> gap) {
-        String binaryString = String.format("%06d", 0);
+        String binaryString = String.format("%02d", 0);
         gap = operations.divideStringToArrayList(binaryString);
         this.gap = gap;
     }
