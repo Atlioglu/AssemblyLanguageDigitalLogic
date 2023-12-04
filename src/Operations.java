@@ -12,6 +12,9 @@ public class Operations {
         String combinedNumbersString= concatenateArrayListToString(binaryArrayList);
         int combinedNumbersInteger = Integer.parseInt(String.valueOf(combinedNumbersString), 2);
         combinedNumbersString= Integer.toHexString(combinedNumbersInteger);
+        while (combinedNumbersString.length() < 5) {
+            combinedNumbersString = "0" + combinedNumbersString;
+        }
         return divideStringToArrayList(combinedNumbersString);
     }
 
@@ -23,7 +26,7 @@ public class Operations {
 
 
     public String concatenateArrayListToString(ArrayList<Character> charArrayList){
-        String combineNumbers =""; // Change it with processor.opcode
+        String combineNumbers =""; 
         for(int i=0; i<charArrayList.size(); i++){
             combineNumbers +=charArrayList.get(i);
         }

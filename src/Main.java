@@ -1,35 +1,53 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {    
-        
         CheckInstructionType checkInstructionType = new CheckInstructionType();
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        String[] parts = input.split("[ ,]+");
-        ArrayList<String> inputList = new ArrayList<>(Arrays.asList(parts));
-        for(int i=0; i<inputList.size(); i++){
-            String currentString = inputList.get(i);
-            if (currentString.startsWith("R")) {
-                inputList.set(i, currentString.substring(1));
-            }
-        }
-        System.out.println(inputList);
-        checkInstructionType.setInstructionName(inputList.get(0));
-        checkInstructionType.setInputList(inputList);
-        
         Operations operations = new Operations();
-        System.out.println(operations.convertBinaryToHex(checkInstructionType.decideInstructionName()));
-                
+
+        String fileName = "input.txt"; 
+        ArrayList<ArrayList<String>> lines = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] wordsArray = line.split("[ ,]+");
+                ArrayList<String> words = new ArrayList<>();
+      
+                for (String word : wordsArray) {
+                     if (word.startsWith("R")) {
+                        word = word.substring(1); 
+                        }
+                        words.add(word);
+                    }
+                checkInstructionType.setInstructionName(words.get(0));
+                checkInstructionType.setInputList(words);
+                ArrayList<Character> arrayListForOutput = new ArrayList<Character>();
+                arrayListForOutput = operations.convertBinaryToHex(checkInstructionType.decideInstructionName());
+
+                writeFile("output.txt",arrayListForOutput,true);
+
+                lines.add(words);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
     }
 
-    public static void toString(ArrayList<Character> arrayList){
-        for(int i =0; i<arrayList.size(); i++){
-            System.out.print(arrayList.get(i));
-        }
+
+    public static void writeFile(String filePath, ArrayList<Character> data, boolean append) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, append))) {
+            for (Character ch : data) {
+                writer.write(ch);
+            }
+            writer.write(32);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
     }
-    
 }

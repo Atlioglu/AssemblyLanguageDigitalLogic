@@ -18,11 +18,14 @@ public class LdInstruction extends Processor{
     }
 
     public void setDest(ArrayList<Character> dest) {
+        ArrayList<Character> trying = new ArrayList<Character>();
         String binaryString = operations.concatenateArrayListToString(dest);
         int numbere = Integer.parseInt(binaryString);
         binaryString = String.format("%04d", Integer.parseInt(Integer.toBinaryString(numbere)));
-        dest = operations.divideStringToArrayList(binaryString);
-        this.dest = dest;
+        trying = operations.divideStringToArrayList(binaryString);
+        dest = trying;
+
+        this.dest = trying;
     }
 
     public ArrayList<Character> getAddressValue() {

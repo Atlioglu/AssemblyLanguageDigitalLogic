@@ -108,7 +108,8 @@ public class CheckInstructionType {
         else if(instructionName.equals("LD")){
             ldInstruction.setDest(operations.divideStringToArrayList(getInputList().get(1)));
             ldInstruction.setAddressValue((operations.divideStringToArrayList(getInputList().get(2))));
-            ArrayList<Character> arrayListChar = operations.combineArrayLists(ldInstruction.opcode, ldInstruction.getDest());
+            ArrayList<Character> arrayListChar = new ArrayList<>();
+            arrayListChar = operations.combineArrayLists(ldInstruction.opcode, ldInstruction.getDest());
             arrayListChar = operations.combineArrayLists(arrayListChar, ldInstruction.getAddressValue());
             return arrayListChar;
 
