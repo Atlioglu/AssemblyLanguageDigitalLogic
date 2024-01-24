@@ -1,18 +1,22 @@
-## Getting Started
+Instruction to Hexadecimal Converter
+Purpose
+This tool is designed to convert programming or machine instructions into their hexadecimal representation. It is particularly useful for developers and students working with low-level programming or hardware simulation.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Usage
+To use the tool, follow these simple steps:
 
-## Folder Structure
+Prepare Your Instructions: Write your instructions in plain text. Each instruction should be separated by a newline.
 
-The workspace contains two folders by default, where:
+Input File: Save your instructions in a file named input.txt. This file should be placed in the same directory as the converter tool.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Batch Processing: The tool processes one instruction at a time. Do not enter all instructions simultaneously; they should be input sequentially, one after the other.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Running the Converter: Execute the tool to convert the instructions in input.txt into hexadecimal format. The output will be saved in a separate file.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Additional Properties
+Instruction Part Access: Users can access specific parts of an instruction, such as SRC1 of an ADD instruction. This feature allows for detailed analysis and debugging of individual instruction components.
 
-## Dependency Management
+Error Handling: In case of an invalid instruction, the tool will provide a relevant error message, helping users to quickly identify and correct the issue.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Output Format: The hexadecimal output is formatted for easy reading and further processing.
+
